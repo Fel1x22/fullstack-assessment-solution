@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Byteful Fullstack Assessment
 
-## Getting Started
+#### By Felix Underwood
 
-First, run the development server:
+## Running the App
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Start the application using npm:
+
+```
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app makes use of two environment variables `PUBLIC_KEY` and `PRIVATE_KEY` which are stored locally in .env.local. An example of the .env.local file can be found in .env.example.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Additional Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The first change I would make if I had more time to work on the application would be to implement a cache for the lists of countries, cities and especially ASNs returned by the API. This would avoid repeated API calls and thus reduce load on the server.
 
-## Learn More
+Another area I would change is by replacing the timer for key event checks in the ASN search, and adding debouncing for all three input fields. This would avoid repeated API calls when the user is quickly typing in the field, reducing calls to the API without affecting the user experience.
 
-To learn more about Next.js, take a look at the following resources:
+Finally, I think a next step would be to create some form of user credential verification to ensure that the user is actually authenticated to use the system. This wouldn't have to be terribly complex, requiring a new API route for the check.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Trade-Offs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Much of the trade-offs that I had to make with the system came down to implementing more of the functionality instead of optimising individual systems. This wasn't much of a problem in such a small case, where even 1000 proxies could be generating in under a second and the ASN lists were much the same. However, in a production environment obviously performance plays a much larger role. This is why many of the first changes I would make to the system involve improving response times in some way or another.
