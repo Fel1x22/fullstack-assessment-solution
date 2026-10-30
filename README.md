@@ -4,9 +4,10 @@
 
 ## Running the App
 
-Start the application using npm:
+Build and start the application using npm:
 
 ```
+npm run build
 npm start
 ```
 
